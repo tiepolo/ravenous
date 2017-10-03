@@ -4,7 +4,7 @@ import BusinessList from './components/BusinessList/BusinessList.js'
 import SearchBar from './components/SearchBar/SearchBar.js'
 import logo from './logo.svg';
 
-class App extends React.component {
+class App extends React.Component {
   render() {
     return (
       <div className="App">
