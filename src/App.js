@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import BusinessList from './components/BusinessList/BusinessList.js'
 import SearchBar from './components/SearchBar/SearchBar.js'
+import Yelp from './util/Yelp.js';
 import logo from './logo.svg';
 import Yelp from './util/Yelp';
 
@@ -27,8 +28,18 @@ const businesses = [
 ]
 
 class App extends React.Component {
+  constructor(props) {
+    this.state = {
+      businesses: []
+    };
+    this.searchYelp = this.searchYelp.bind(this);
+  }
   searchYelp(term, location, sortBy) {
-    console.log(`Searching Yelp with ${term}, ${location}, ${sortBy}`);
+    Yelp.search(term, location, sortBy).then(businesses => {
+      setState({
+        businesses: businesses
+      });
+    });
   }
   render() {
     return (
