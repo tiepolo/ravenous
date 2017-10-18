@@ -4,7 +4,6 @@ import BusinessList from './components/BusinessList/BusinessList.js'
 import SearchBar from './components/SearchBar/SearchBar.js'
 import Yelp from './util/Yelp.js';
 import logo from './logo.svg';
-import Yelp from './util/Yelp';
 
 const business = {
   imageSrc: 'https://s3.amazonaws.com/codecademy-content/programs/react/ravenous/pizza.jpg',
@@ -29,6 +28,7 @@ const businesses = [
 
 class App extends React.Component {
   constructor(props) {
+    super(props);
     this.state = {
       businesses: []
     };
@@ -36,7 +36,7 @@ class App extends React.Component {
   }
   searchYelp(term, location, sortBy) {
     Yelp.search(term, location, sortBy).then(businesses => {
-      setState({
+      this.setState({
         businesses: businesses
       });
     });
